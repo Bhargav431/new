@@ -20,6 +20,7 @@ output application/java
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
+			<set-payload value="#[payload]" doc:name="Set Payload" doc:id="bd0ee686-656b-4319-8c3c-6b962565ef0f" />
 		</foreach>
 		<choice doc:name="Choice" doc:id="6ed936bc-28fc-46a1-bb25-9ba21a8a64d1" >
 			<when expression="#[payload != null]">
