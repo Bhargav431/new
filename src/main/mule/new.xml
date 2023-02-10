@@ -11,6 +11,14 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<flow name="newFlow" doc:id="cabb3692-3769-4d53-8555-ddc28f6832fc" >
 		<http:listener doc:name="Listener" doc:id="1bc4e18c-c43f-4841-a81d-0d4fb809c1c7" config-ref="HTTP_Listener_config" path="/new"/>
 		<logger level="INFO" doc:name="Logger" doc:id="772c4def-b350-4d94-b653-03cc06118357" />
+		<choice doc:name="Choice" doc:id="09227cc1-919d-48f3-ad2f-09929e4b6272" >
+			<when expression="#[payload != null]">
+				<set-payload value="#[payload]" doc:name="Set Payload" doc:id="d2638095-1513-4f44-a068-39e3a2f9a05a" />
+			</when>
+			<otherwise >
+				<logger level="INFO" doc:name="Logger" doc:id="7e832973-7a16-4b90-af0b-99642147045e" />
+			</otherwise>
+		</choice>
 		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="ded73f70-d8d0-4fd6-8462-24390c92125a" />
 		<logger level="INFO" doc:name="Logger" doc:id="00966f19-c8fe-4098-9714-91ac60ec0530" message="#[payload]"/>
 	</flow>
